@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>ShelfScope</h1>
+    <div class="controls">
+        <input type="text" id="search" placeholder="Search books...">
+        
+        <select id="sortYear">
+        <option value="">Sort by Year</option>
+        <option value="asc">Old → New</option>
+        <option value="desc">New → Old</option>
+        </select>
+    </div>
+    <div id="loader">Searching books...</div>
+    <div id="booksContainer" class="books"></div>
+    <script src="script.js"></script>
+</body>
+</html>
