@@ -50,15 +50,25 @@ function displayBooks(data) {
       : "";
 
     card.innerHTML = `
+      <button class="fav-btn">🤍</button>
       <img src="${cover}" alt="cover">
       <h3>${book.title}</h3>
       <p>${book.author_name?.[0] || "Unknown"}</p>
+      <p>Year: ${book.first_publish_year || "N/A"}</p>
     `;
+
+    const favBtn = card.querySelector(".fav-btn");
+
+    updateFavIcon(favBtn, book.key);
+
+    favBtn.addEventListener("click", () => {
+      toggleFavorite(book);
+      updateFavIcon(favBtn, book.key);
+    });
 
     container.appendChild(card);
   });
 }
-
 searchInput.addEventListener("input", () => {
   const query = searchInput.value;
 
@@ -99,3 +109,64 @@ sortYear.addEventListener("change", () => {
 
   displayBooks(result);
 });
+
+function getFavorites() {
+  return JSON.parse(localStorage.getItem("bookFavorites")) || [];
+}
+
+function toggleFavorite(book) {
+  let favs = getFavorites();
+
+  const exists = favs.find(b => b.key === book.key);
+
+  if (exists) {
+    favs = favs.filter(b => b.key !== book.key);
+  } else {
+    favs.push(book);
+  }
+
+  localStorage.setItem("bookFavorites", JSON.stringify(favs));
+}
+
+function updateFavIcon(btn, key) {
+  const favs = getFavorites();
+  const isFav = favs.find(b => b.key === key);
+
+  btn.textContent = isFav ? "❤️" : "🤍";
+}
+
+const toggle = document.getElementById("themeToggle");
+
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark-mode");
+  toggle.checked = true;
+}
+
+toggle.addEventListener("change", () => {
+  if (toggle.checked) {
+    document.body.classList.add("dark-mode");
+    localStorage.setItem("theme", "dark");
+  } else {
+    document.body.classList.remove("dark-mode");
+    localStorage.setItem("theme", "light");
+  }
+});
+
+function showFavorites() {
+  const favs = getFavorites();
+
+  if (favs.length === 0) {
+    container.innerHTML = "<h2>No favorites yet ❤️</h2>";
+    return;
+  }
+
+  displayBooks(favs);
+}
+
+function showAllBooks() {
+  displayBooks(books);
+}
+
+function goBack() {
+  displayBooks(books); 
+}

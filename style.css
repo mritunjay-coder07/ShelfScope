@@ -1,47 +1,217 @@
 body {
   font-family: Arial;
-  background: #b8eae7;
-  padding: 20px;
+  background: #0f172a;
+  color: white;
   text-align: center;
 }
 
-input {
-  padding: 10px;
-  width: 250px;
-  margin-bottom: 20px;
+h1 {
+  text-align: center;
+  /* margin-top: 10px; */
+  font-size: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.loader {
+
+.controls {
   margin: 20px;
 }
 
-.books {
+input, select {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 8px;
+  border: none;
+  background-color: rgb(209, 224, 243);
+}
+
+.grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
+  padding: 20px;
 }
 
 .card {
-  background: white;
-  padding: 10px;
+  position: relative;
+  background: #a0bbe8;
+  padding: 15px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  transform: scale(1);
-  border: 3px solid black;
+  transition: 0.3s;
+  border: 2px solid black;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .card img {
   width: 100%;
-  height: 200px;
-  object-fit: contain;
+  height: 250px;
+  object-fit: cover;
 }
 
-.card:hover {
-  transform: scale(1.05) translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+.fav-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
 
-h1{
-    font-size: 55px;
+.read-btn {
+  margin-top: 10px;
+  padding: 5px;
+  border: none;
+  background: #facc15;
+  border-radius: 5px;
+}
+
+.switch {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 30px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 30px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "☀️";
+  height: 24px;
+  width: 24px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #1e293b;
+}
+
+input:checked + .slider::before {
+  transform: translateX(30px);
+  content: "🌙";
+}
+
+body {
+  background: #f1f5f9;
+  color: black;
+}
+
+.dark-mode {
+  background: #0f172a;
+  color: white;
+}
+
+.dark-mode .card {
+  background: #1e293b;
+  border: 2px solid #facc15;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.top-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.fav-main-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #c1e3e9;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.fav-main-btn:hover {
+  transform: scale(1.05);
+}
+
+.back-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #c9e2ec;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  transform: scale(1.05);
+}
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #bde2f2;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  transform: scale(1.05);
+}
+
+.fav-main-btn {
+  position: absolute;
+  top: 20px;
+  right: 90px;
+
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #b9e2f0;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+
+}
+
+.fav-main-btn:hover {
+  transform: scale(1.05);
 }
