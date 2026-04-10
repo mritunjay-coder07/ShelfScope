@@ -113,7 +113,7 @@ ShelfScope/
 
 ## 🌐 Live Demo
 
-Add your deployed link here
+[Add your deployed link here](https://shelfscope.netlify.app/)
 
 ---
 
