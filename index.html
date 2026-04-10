@@ -1,24 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <label class="switch">
+  <input type="checkbox" id="themeToggle">
+  <span class="slider"></span>
+</label>
+  <title>ShelfScope</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>ShelfScope</h1>
-    <div class="controls">
-        <input type="text" id="search" placeholder="Search books...">
-        
-        <select id="sortYear">
-        <option value="">Sort by Year</option>
-        <option value="asc">Old → New</option>
-        <option value="desc">New → Old</option>
-        </select>
+<button onclick="goBack()" class="back-btn">⬅ Back</button>
+
+<h1>ShelfScope</h1>
+<button onclick="showFavorites()" class="fav-main-btn">
+  ❤️ Favorites
+</button>
+<div class="controls">
+  <input type="text" id="search" placeholder="Search books...">
+
+  <select id="sortYear">
+    <option value="">Sort by Year</option>
+    <option value="asc">Old → New</option>
+    <option value="desc">New → Old</option>
+  </select>
+  
+
+</div>
+  <div id="loader">Loading...</div>
+  <div id="booksContainer" class="grid"></div>
+
+  <div id="bookModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div id="modalDetails">
+      </div>
     </div>
-    <div id="loader">Searching books...</div>
-    <div id="booksContainer" class="books"></div>
-    <script src="script.js"></script>
+  </div>
+
+  <div id="lightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <img id="lightboxImg" src="" alt="Full Screen Cover">
+  </div>
+
+  <script src="script.js"></script>
+
 </body>
 </html>
